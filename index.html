@@ -113,7 +113,7 @@ body { font-family: var(--font); background: var(--surface-bg); color: var(--tex
 .ds-preview .modal { position: static; transform: none; max-width: 480px; }
 .ds-preview .slide-panel { position: static; transform: none; height: auto; max-height: 400px; overflow: hidden; width: 360px; }
 .ds-preview .toast { position: static; opacity: 1; transform: none; }
-.ds-preview .top-toast { position: static; opacity: 1; transform: none; margin-bottom: 8px; }
+.ds-preview .toaster { position: static; opacity: 1; transform: none; pointer-events: auto; margin-bottom: 12px; }
 .ds-preview .avatar-dropdown { position: static; opacity: 1; pointer-events: auto; display: flex; }
 .ds-preview .notif-dropdown { position: static; opacity: 1; pointer-events: auto; display: flex; max-width: 380px; }
 .ds-preview .advanced-filters-panel { position: static; transform: none; height: auto; max-height: 400px; overflow: hidden; width: 360px; }
@@ -515,7 +515,7 @@ html { scroll-behavior: smooth; }
      ============================================================ -->
 <section id="icons" class="ds-section">
   <h2 class="ds-section-title">Icons</h2>
-  <p class="ds-section-desc">15 monochrome SVG icons (CSS mask-image, inherit <code style="font-family:'SF Mono',Consolas,monospace; font-size:12.5px; background:var(--blue-100); color:var(--blue-900); padding:1px 6px; border-radius:3px;">currentColor</code>) + 5 multi-colored signal icons (CSS background-image).</p>
+  <p class="ds-section-desc">15 monochrome SVG icons (CSS mask-image, inherit <code style="font-family:'SF Mono',Consolas,monospace; font-size:12.5px; background:var(--blue-100); color:var(--blue-900); padding:1px 6px; border-radius:3px;">currentColor</code>) + 5 multi-colored signal icons + 3 feedback badge icons (CSS background-image).</p>
 
   <div class="ds-subsection">
     <p class="ds-label">Icon Library</p>
@@ -547,6 +547,15 @@ html { scroll-behavior: smooth; }
       <div class="ds-icon-cell"><span class="icon-signal-2" style="width:20px;height:20px;background-size:20px 20px;"></span><span>icon-signal-2</span></div>
       <div class="ds-icon-cell"><span class="icon-signal-3" style="width:20px;height:20px;background-size:20px 20px;"></span><span>icon-signal-3</span></div>
       <div class="ds-icon-cell"><span class="icon-signal-4" style="width:20px;height:20px;background-size:20px 20px;"></span><span>icon-signal-4</span></div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <p class="ds-label">Feedback Icons</p>
+    <div class="ds-icon-grid">
+      <div class="ds-icon-cell"><span class="icon-fb-info" style="width:20px;height:20px;background-size:20px 20px;"></span><span>icon-fb-info</span></div>
+      <div class="ds-icon-cell"><span class="icon-fb-success" style="width:20px;height:20px;background-size:20px 20px;"></span><span>icon-fb-success</span></div>
+      <div class="ds-icon-cell"><span class="icon-fb-error" style="width:20px;height:20px;background-size:20px 20px;"></span><span>icon-fb-error</span></div>
     </div>
   </div>
 
@@ -2538,9 +2547,9 @@ html { scroll-behavior: smooth; }
      ============================================================ -->
 <section id="toasts" class="ds-section">
   <h2 class="ds-section-title">Toasts</h2>
-  <p class="ds-section-desc">Notification toasts in bottom-center (simple) and top-right (typed with icon) positions.</p>
+  <p class="ds-section-desc">Notification toasts for system feedback. Bottom toast for simple undo-able actions, toaster alerts for typed notifications with icon, title, description, and optional action.</p>
 
-  <div class="ds-guideline">Use bottom toasts for simple undo-able actions. Use top toasts with icons for success/error/warning/info feedback.</div>
+  <div class="ds-guideline">Use <code>.toast</code> for simple snackbar-style notifications. Use <code>.toaster</code> + variant for typed alerts with feedback icons.</div>
 
   <div class="ds-subsection">
     <p class="ds-label">Bottom Toast</p>
@@ -2563,37 +2572,132 @@ html { scroll-behavior: smooth; }
   </div>
 
   <div class="ds-subsection">
-    <p class="ds-label">Top Toasts</p>
-    <div class="ds-component-block" id="block-toasts-top">
+    <p class="ds-label">Toaster Alert — Informative</p>
+    <div class="ds-component-block" id="block-toaster-info">
       <div class="ds-tabs-bar">
-        <button class="active" data-tab="preview" onclick="switchTab(this,'block-toasts-top')">Preview</button>
-        <button data-tab="code" onclick="switchTab(this,'block-toasts-top')">Code</button>
+        <button class="active" data-tab="preview" onclick="switchTab(this,'block-toaster-info')">Preview</button>
+        <button data-tab="code" onclick="switchTab(this,'block-toaster-info')">Code</button>
       </div>
-      <div class="ds-preview">
-        <div class="ds-preview-col">
-          <div class="top-toast visible type-success" style="position:static; opacity:1; transform:none;"><div class="top-toast-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5.5a.75.75 0 01-1.12.02l-2.5-2.5a.75.75 0 111.06-1.06l1.94 1.94 3.97-4.84a.75.75 0 111.15.94z"/></svg></div><div class="top-toast-content"><div class="top-toast-title">Success</div><div class="top-toast-desc">Operation completed.</div></div><button class="top-toast-close"><svg width="12" height="12" viewBox="0 0 16 16"><path d="M12.5 3.5l-9 9m0-9l9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></button></div>
-
-          <div class="top-toast visible type-error" style="position:static; opacity:1; transform:none;"><div class="top-toast-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm.75 11.5h-1.5v-1.5h1.5v1.5zm0-3h-1.5V4.5h1.5v4z"/></svg></div><div class="top-toast-content"><div class="top-toast-title">Error</div><div class="top-toast-desc">Something went wrong.</div></div><button class="top-toast-close"><svg width="12" height="12" viewBox="0 0 16 16"><path d="M12.5 3.5l-9 9m0-9l9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></button></div>
-
-          <div class="top-toast visible type-warning" style="position:static; opacity:1; transform:none;"><div class="top-toast-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8.58 1.39a.67.67 0 00-1.16 0l-6.5 11.24A.67.67 0 001.5 13.67h13a.67.67 0 00.58-1.04L8.58 1.39z"/></svg></div><div class="top-toast-content"><div class="top-toast-title">Warning</div><div class="top-toast-desc">Proceed with caution.</div></div><button class="top-toast-close"><svg width="12" height="12" viewBox="0 0 16 16"><path d="M12.5 3.5l-9 9m0-9l9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></button></div>
-
-          <div class="top-toast visible type-info" style="position:static; opacity:1; transform:none;"><div class="top-toast-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm.75 4.5v4h-1.5v-4h1.5zm0 7h-1.5v-1.5h1.5V11.5z"/></svg></div><div class="top-toast-content"><div class="top-toast-title">Info</div><div class="top-toast-desc">Additional information here.</div></div><button class="top-toast-close"><svg width="12" height="12" viewBox="0 0 16 16"><path d="M12.5 3.5l-9 9m0-9l9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></button></div>
+      <div class="ds-preview" style="padding:0;">
+        <div class="toaster toaster-info visible" style="width:100%;">
+          <span class="icon-fb-info"></span>
+          <div class="toaster-content">
+            <div class="toaster-text">
+              <div class="toaster-title">Upcoming Event</div>
+              <div class="toaster-desc">You have an upcoming scan event in about an hour.</div>
+            </div>
+            <button class="btn-text" style="align-self:flex-start;">Learn More</button>
+          </div>
+          <button class="toaster-close"><span class="icon icon-close"></span></button>
         </div>
       </div>
       <div class="ds-code" style="display:none">
         <button class="ds-copy" onclick="copyCode(this)">Copy</button>
-        <pre><code class="language-html">&lt;div class="top-toast visible type-success"&gt;
-  &lt;div class="top-toast-icon"&gt;&lt;svg ...&gt;&lt;/svg&gt;&lt;/div&gt;
-  &lt;div class="top-toast-content"&gt;
-    &lt;div class="top-toast-title"&gt;Success&lt;/div&gt;
-    &lt;div class="top-toast-desc"&gt;Operation completed.&lt;/div&gt;
+        <pre><code class="language-html">&lt;div class="toaster toaster-info visible"&gt;
+  &lt;span class="icon-fb-info"&gt;&lt;/span&gt;
+  &lt;div class="toaster-content"&gt;
+    &lt;div class="toaster-text"&gt;
+      &lt;div class="toaster-title"&gt;Upcoming Event&lt;/div&gt;
+      &lt;div class="toaster-desc"&gt;You have an upcoming scan event.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="btn-text"&gt;Learn More&lt;/button&gt;
   &lt;/div&gt;
-  &lt;button class="top-toast-close"&gt;&lt;svg ...&gt;&lt;/svg&gt;&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;!-- Types: type-success, type-error, type-warning, type-info --&gt;</code></pre>
+  &lt;button class="toaster-close"&gt;&lt;span class="icon icon-close"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
       </div>
     </div>
+  </div>
+
+  <div class="ds-subsection">
+    <p class="ds-label">Toaster Alert — Success</p>
+    <div class="ds-component-block" id="block-toaster-success">
+      <div class="ds-tabs-bar">
+        <button class="active" data-tab="preview" onclick="switchTab(this,'block-toaster-success')">Preview</button>
+        <button data-tab="code" onclick="switchTab(this,'block-toaster-success')">Code</button>
+      </div>
+      <div class="ds-preview" style="padding:0;">
+        <div class="toaster toaster-success visible" style="width:100%;">
+          <span class="icon-fb-success"></span>
+          <div class="toaster-content">
+            <div class="toaster-text">
+              <div class="toaster-title">New Workflow</div>
+              <div class="toaster-desc">Workflow "Name of Workflow" has been added to your Pipeline Studio.</div>
+            </div>
+            <button class="btn-text" style="align-self:flex-start;">Learn More</button>
+          </div>
+          <button class="toaster-close"><span class="icon icon-close"></span></button>
+        </div>
+      </div>
+      <div class="ds-code" style="display:none">
+        <button class="ds-copy" onclick="copyCode(this)">Copy</button>
+        <pre><code class="language-html">&lt;div class="toaster toaster-success visible"&gt;
+  &lt;span class="icon-fb-success"&gt;&lt;/span&gt;
+  &lt;div class="toaster-content"&gt;
+    &lt;div class="toaster-text"&gt;
+      &lt;div class="toaster-title"&gt;New Workflow&lt;/div&gt;
+      &lt;div class="toaster-desc"&gt;Workflow added to Pipeline Studio.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="btn-text"&gt;Learn More&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button class="toaster-close"&gt;&lt;span class="icon icon-close"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <p class="ds-label">Toaster Alert — Error</p>
+    <div class="ds-component-block" id="block-toaster-error">
+      <div class="ds-tabs-bar">
+        <button class="active" data-tab="preview" onclick="switchTab(this,'block-toaster-error')">Preview</button>
+        <button data-tab="code" onclick="switchTab(this,'block-toaster-error')">Code</button>
+      </div>
+      <div class="ds-preview" style="padding:0;">
+        <div class="toaster toaster-error visible" style="width:100%;">
+          <span class="icon-fb-error"></span>
+          <div class="toaster-content">
+            <div class="toaster-text">
+              <div class="toaster-title">Failed Scan</div>
+              <div class="toaster-desc">Scan "Name of Scan" failed to process due lorem ipsum.</div>
+            </div>
+            <button class="btn-text" style="align-self:flex-start;">Learn More</button>
+          </div>
+          <button class="toaster-close"><span class="icon icon-close"></span></button>
+        </div>
+      </div>
+      <div class="ds-code" style="display:none">
+        <button class="ds-copy" onclick="copyCode(this)">Copy</button>
+        <pre><code class="language-html">&lt;div class="toaster toaster-error visible"&gt;
+  &lt;span class="icon-fb-error"&gt;&lt;/span&gt;
+  &lt;div class="toaster-content"&gt;
+    &lt;div class="toaster-text"&gt;
+      &lt;div class="toaster-title"&gt;Failed Scan&lt;/div&gt;
+      &lt;div class="toaster-desc"&gt;Scan failed to process.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="btn-text"&gt;Learn More&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button class="toaster-close"&gt;&lt;span class="icon icon-close"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <p class="ds-label">Class Reference</p>
+    <table class="ds-ref-table">
+      <tr><td><code>.toaster</code></td><td>Base toaster alert container (fixed top-right, 485px)</td></tr>
+      <tr><td><code>.toaster-info</code></td><td>Informative — neutral border</td></tr>
+      <tr><td><code>.toaster-success</code></td><td>Success — blue border</td></tr>
+      <tr><td><code>.toaster-error</code></td><td>Error — red border</td></tr>
+      <tr><td><code>.toaster-content</code></td><td>Flex column: text + optional action</td></tr>
+      <tr><td><code>.toaster-title</code></td><td>16px / 500 heading</td></tr>
+      <tr><td><code>.toaster-desc</code></td><td>14px / 400 body text</td></tr>
+      <tr><td><code>.toaster-close</code></td><td>Close button (use <code>.icon .icon-close</code>)</td></tr>
+      <tr><td><code>.icon-fb-info</code></td><td>Navy info badge icon</td></tr>
+      <tr><td><code>.icon-fb-success</code></td><td>Blue check badge icon</td></tr>
+      <tr><td><code>.icon-fb-error</code></td><td>Red X badge icon</td></tr>
+      <tr><td><code>.visible</code></td><td>Shows the toaster (opacity 1, slide in)</td></tr>
+    </table>
   </div>
 </section>
 
