@@ -2719,36 +2719,44 @@ th:last-child:not(.col-action):not(.col-expand):not(.col-cb):not(:empty) { paddi
 .stat-card-total {
   display: flex;
   flex-direction: column;
-  gap: var(--space-tight);
-  padding-bottom: var(--space-std);
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2px;
+  padding-bottom: 20px;
+  min-width: 166px;
+  align-self: stretch;
 }
 .stat-card-label {
   font-size: 14px;
   font-weight: 400;
   color: var(--text-subtle);
   line-height: 16px;
+  align-self: stretch;
 }
 .stat-card-value {
   font-size: 20px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 23px;
   color: var(--text-strong);
   display: flex;
   align-items: center;
   gap: 6px;
 }
 .stat-card-trend {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  width: 16px;
+  height: 16px;
   justify-content: center;
+  align-items: center;
 }
 .stat-card-trend svg { width: 16px; height: 16px; }
 .stat-card-trend-up svg { color: var(--ds-success-text); }
 .stat-card-trend-down svg { color: var(--ds-alert-text); }
 .stat-card-trend-text {
-  font-size: 12px;
-  color: var(--ds-success-text);
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-subtle);
+  line-height: 16px;
 }
 .stat-card-legend {
   display: flex;
