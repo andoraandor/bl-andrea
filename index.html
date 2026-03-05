@@ -1898,6 +1898,133 @@ html { scroll-behavior: smooth; }
   </div>
 
   <div class="ds-subsection">
+    <p class="ds-label">KPI Stat Cards (Threats / DLP / Sanitized)</p>
+    <div class="ds-component-block" id="block-cards-stat">
+      <div class="ds-tabs-bar">
+        <button class="active" data-tab="preview" onclick="switchTab(this,'block-cards-stat')">Preview</button>
+        <button data-tab="code" onclick="switchTab(this,'block-cards-stat')">Code</button>
+      </div>
+      <div class="ds-preview">
+        <div class="stat-card-row">
+          <!-- Threats Detected -->
+          <div class="audit-card stat-card stat-card--threats">
+            <div class="card-header">
+              <h2>Threats Detected</h2>
+              <a href="#" class="card-header-link">View Report</a>
+            </div>
+            <div class="stat-card-body">
+              <div class="stat-card-total">
+                <div class="stat-card-label">Total Files</div>
+                <div class="stat-card-value">2,001</div>
+              </div>
+              <div class="stat-card-legend">
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-900);"></span><span class="stat-card-legend-label">Known Malware</span><span class="stat-card-legend-val">1,834</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-800);"></span><span class="stat-card-legend-label">Malicious Behavior</span><span class="stat-card-legend-val">47</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-700);"></span><span class="stat-card-legend-label">Vulnerable Executable</span><span class="stat-card-legend-val">263</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-500);"></span><span class="stat-card-legend-label">Reputation Match</span><span class="stat-card-legend-val">436</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-300);"></span><span class="stat-card-legend-label">Blocked Origin by Policy</span><span class="stat-card-legend-val">65</span></div>
+              </div>
+              <div class="stat-card-chart">
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">1,834</span><div class="stat-card-chart-bar" style="height:100%;background:var(--blue-900);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">47</span><div class="stat-card-chart-bar" style="height:3%;background:var(--blue-800);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">263</span><div class="stat-card-chart-bar" style="height:14%;background:var(--blue-700);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">436</span><div class="stat-card-chart-bar" style="height:24%;background:var(--blue-500);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">65</span><div class="stat-card-chart-bar" style="height:4%;background:var(--blue-300);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Loss Prevented -->
+          <div class="audit-card stat-card stat-card--dlp">
+            <div class="card-header">
+              <h2>Data Loss Prevented</h2>
+              <a href="#" class="card-header-link">View Report</a>
+            </div>
+            <div class="stat-card-body">
+              <div class="stat-card-total">
+                <div class="stat-card-label">Total Files</div>
+                <div class="stat-card-value">824</div>
+              </div>
+              <div class="stat-card-legend">
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--green-900);"></span><span class="stat-card-legend-label">PII Detection</span><span class="stat-card-legend-val">412</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--green-800);"></span><span class="stat-card-legend-label">PHI Detection</span><span class="stat-card-legend-val">198</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--green-700);"></span><span class="stat-card-legend-label">Financial Data</span><span class="stat-card-legend-val">127</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--green-500);"></span><span class="stat-card-legend-label">Custom Rules</span><span class="stat-card-legend-val">62</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--green-300);"></span><span class="stat-card-legend-label">Watermarking</span><span class="stat-card-legend-val">25</span></div>
+              </div>
+              <div class="stat-card-chart">
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">412</span><div class="stat-card-chart-bar" style="height:100%;background:var(--green-900);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">198</span><div class="stat-card-chart-bar" style="height:48%;background:var(--green-800);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">127</span><div class="stat-card-chart-bar" style="height:31%;background:var(--green-700);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">62</span><div class="stat-card-chart-bar" style="height:15%;background:var(--green-500);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">25</span><div class="stat-card-chart-bar" style="height:6%;background:var(--green-300);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Files Sanitized -->
+          <div class="audit-card stat-card stat-card--sanitized">
+            <div class="card-header">
+              <h2>Files Sanitized</h2>
+              <a href="#" class="card-header-link">View Report</a>
+            </div>
+            <div class="stat-card-body">
+              <div class="stat-card-total">
+                <div class="stat-card-label">Total Files</div>
+                <div class="stat-card-value">36,410</div>
+              </div>
+              <div class="stat-card-legend">
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-900);"></span><span class="stat-card-legend-label">Deep CDR</span><span class="stat-card-legend-val">28,900</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-700);"></span><span class="stat-card-legend-label">Quick Sanitize</span><span class="stat-card-legend-val">4,210</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-500);"></span><span class="stat-card-legend-label">Macro Removal</span><span class="stat-card-legend-val">2,100</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-400);"></span><span class="stat-card-legend-label">Metadata Strip</span><span class="stat-card-legend-val">890</span></div>
+                <div class="stat-card-legend-row"><span class="stat-card-legend-dot" style="background:var(--blue-300);"></span><span class="stat-card-legend-label">Link Sanitize</span><span class="stat-card-legend-val">310</span></div>
+              </div>
+              <div class="stat-card-chart">
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">28,900</span><div class="stat-card-chart-bar" style="height:100%;background:var(--blue-900);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">4,210</span><div class="stat-card-chart-bar" style="height:15%;background:var(--blue-700);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">2,100</span><div class="stat-card-chart-bar" style="height:7%;background:var(--blue-500);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">890</span><div class="stat-card-chart-bar" style="height:3%;background:var(--blue-400);"></div></div>
+                <div class="stat-card-chart-col"><span class="stat-card-chart-label">310</span><div class="stat-card-chart-bar" style="height:1%;background:var(--blue-300);"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ds-code" style="display:none">
+        <button class="ds-copy" onclick="copyCode(this)">Copy</button>
+        <pre><code class="language-html">&lt;div class="audit-card stat-card stat-card--threats"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h2&gt;Threats Detected&lt;/h2&gt;
+    &lt;a href="#" class="card-header-link"&gt;View Report&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="stat-card-body"&gt;
+    &lt;div class="stat-card-total"&gt;
+      &lt;div class="stat-card-label"&gt;Total Files&lt;/div&gt;
+      &lt;div class="stat-card-value"&gt;2,001&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stat-card-legend"&gt;
+      &lt;div class="stat-card-legend-row"&gt;
+        &lt;span class="stat-card-legend-dot" style="background:var(--blue-900);"&gt;&lt;/span&gt;
+        &lt;span class="stat-card-legend-label"&gt;Known Malware&lt;/span&gt;
+        &lt;span class="stat-card-legend-val"&gt;1,834&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;!-- Repeat for each category... --&gt;
+    &lt;/div&gt;
+    &lt;div class="stat-card-chart"&gt;
+      &lt;div class="stat-card-chart-col"&gt;
+        &lt;span class="stat-card-chart-label"&gt;1,834&lt;/span&gt;
+        &lt;div class="stat-card-chart-bar" style="height:100%;background:var(--blue-900);"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- height = value/max * 100% --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
     <p class="ds-label">Data Table Header</p>
     <div class="ds-component-block" id="block-cards-table-header">
       <div class="ds-tabs-bar">

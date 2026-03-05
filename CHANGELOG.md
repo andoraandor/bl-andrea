@@ -10,6 +10,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Changed
+- **Stat Cards**: Rewrote Threats Prevented card colors from red/alert palette to blue palette (--blue-900 through --blue-300) matching Figma. Legend dots changed from 8px circles to 12×12 rounded squares inside 16×16 containers. Added 5 legend categories per card. Applied same structure to Data Loss Prevented (green palette) and Files Sanitized (blue palette) cards. Added horizontal bar chart (`.stat-card-chart`) with percentage-based proportional heights. Removed top border-color stripe from all variants.
 - **Tables**: `.col-cb` and `.col-action` are now sticky (left/right) for all `.data-table` tables, not just `.table-fixed`. Hover, selected, and dark mode states handled automatically by existing `td`/`th` rules — no explicit overrides needed.
 - **Pagination**: Default items per page changed from 10 to **20** for single-table pages. Added `.no-footer` modifier on `.audit-card` to hide pagination when ≤10 items (also rounds bottom corners of table scroll area). Documented in pagination guideline and tables.md.
 - **Tables**: Added assembled Content Card demos — full card with header/search/filter/table/pagination, and small card with `.no-footer` (≤10 items). Expanded class reference table with card-level and pagination classes.

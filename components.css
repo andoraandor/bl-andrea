@@ -2713,27 +2713,28 @@ th:last-child:not(.col-action):not(.col-expand):not(.col-cb):not(:empty) { paddi
   flex-direction: column;
 }
 .stat-card-body {
-  padding: 16px 20px 12px;
+  padding: var(--space-std);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-std);
   flex: 1;
 }
 .stat-card-total {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--space-tight);
+  padding-bottom: var(--space-std);
 }
 .stat-card-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-subtle);
+  line-height: 16px;
 }
 .stat-card-value {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
+  line-height: 24px;
   color: var(--text-strong);
   display: flex;
   align-items: center;
@@ -2755,32 +2756,86 @@ th:last-child:not(.col-action):not(.col-expand):not(.col-cb):not(:empty) { paddi
 .stat-card-legend {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 12px;
 }
 .stat-card-legend-row {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 13px;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 16px;
 }
 .stat-card-legend-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stat-card-legend-dot::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius);
+  background: inherit;
 }
 .stat-card-legend-label {
   flex: 1;
-  color: var(--text-subtle);
+  color: var(--text-strong);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.stat-card-legend-label.inactive {
+  color: var(--text-muted);
 }
 .stat-card-legend-val {
   color: var(--text-strong);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
+.stat-card-legend-val.inactive {
+  color: var(--text-muted);
+}
+
+/* --- Stat card bar chart (vertical grouped bars) --- */
+.stat-card-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 144px;
+  padding-top: var(--space-std);
+}
+.stat-card-chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  height: 100%;
+}
+.stat-card-chart-label {
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--text-muted);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.stat-card-chart-bar {
+  width: 100%;
+  min-height: 2px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* Stat card semantic variants (Threats Detected / Data Loss Prevented / Sanitized)
+   Each variant uses its own palette for the "View Report" link.
+   Legend dot + bar colors are set via inline style on each row. */
+.stat-card--threats .card-header-link { color: var(--text-link); }
+.stat-card--dlp .card-header-link { color: var(--ds-success-text); }
+.stat-card--sanitized .card-header-link { color: var(--text-link); }
+
 
 /* ========================================================================
    CHART BAR (Simple category bar chart)
